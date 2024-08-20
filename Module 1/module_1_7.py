@@ -1,16 +1,13 @@
-#Входные данные
+# Входные данные
 grades = [[5, 3, 3, 5, 4], [2, 2, 2, 3], [4, 5, 5, 2], [4, 4, 3], [5, 5, 5, 4, 5]]
 students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 
-#Решение
+# Решение
 students = sorted(students)
 average_mark = []
 
 for index_ in grades:
-    count = 0
-    for x in index_:
-        count += x
-    average_mark.append(count / len(index_))
+    average_mark.append(sum(index_) / len(index_))
 
 journal = dict()
 i = 0
