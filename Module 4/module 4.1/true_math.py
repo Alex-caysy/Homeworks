@@ -1,4 +1,4 @@
-import math
+from math import inf
 
 
 def main():
@@ -7,7 +7,7 @@ def main():
 
 def divide(first, second):
     if second == 0:
-        return math.inf
+        return inf
     else:
         return first / second
 
