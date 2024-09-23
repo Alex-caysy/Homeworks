@@ -65,6 +65,7 @@ class House:
     def __del__(self):
         print(f'{self.name} снесён, но он останется в истории')
 
+
 h1 = House('ЖК Эльбрус', 10)
 print(House.houses_history)
 h2 = House('ЖК Акация', 20)
