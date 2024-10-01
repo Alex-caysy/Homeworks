@@ -1,5 +1,6 @@
 import time
 
+
 class User:
     def __init__(self, nickname, password, age):
         self.user = {}
@@ -23,9 +24,6 @@ class UrTube:
         self.videos = []
         self.current_user = None
 
-    def current_user(self):
-        print(f'current user ')
-
     def register(self, nickname, password, age):
         for user in self.users:
             if nickname == user.nickname:
@@ -34,13 +32,13 @@ class UrTube:
         password_h = hash(password)
         user_obj = User(nickname, password_h, age)
         self.users.append(user_obj)
-        self.current_user = user_obj
-        print(f'Пользователь {nickname} успешно создан и вошёл в систему')
+        print(f'Пользователь {nickname} успешно создан')
+        self.log_in(nickname, password)
 
     def log_in(self, nickname, password):
         for user in self.users:
             if nickname == user.nickname and hash(password) == user.password:
-                self.current_user = user
+                self.current_user = user.nickname
                 print(f'Пользователь {nickname} вошёл в систему')
                 return
         print(f'Неверный логин или пароль')
@@ -56,16 +54,20 @@ class UrTube:
         return answer_list
 
     def watch_video(self, title):
-        if self.current_user is None:
+        user_ = None
+        for user in self.users:
+            if user.nickname == self.current_user:
+                user_ = user
+        if user_ is None:
             print('Войдите в аккаунт, чтобы смотреть видео')
             return
         for video in self.videos:
             if title == video.title:
-                if video.adult_mode and self.current_user.age < 18:
+                if video.adult_mode and user_.age < 18:
                     print('Видео доступно только для пользователей старше 18 лет')
                     return
                 for i in range(1, video.duration + 1):
-                    #time.sleep(1)
+                    time.sleep(1)
                     video.time_now = i
                     print(f'{video.time_now} ', end='')
                 print('Конец видео')
