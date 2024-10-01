@@ -1,3 +1,5 @@
+import time
+
 class User:
     def __init__(self, nickname, password, age):
         self.user = {}
@@ -21,6 +23,9 @@ class UrTube:
         self.videos = []
         self.current_user = None
 
+    def current_user(self):
+        print(f'current user ')
+
     def register(self, nickname, password, age):
         for user in self.users:
             if nickname == user.nickname:
@@ -29,13 +34,13 @@ class UrTube:
         password_h = hash(password)
         user_obj = User(nickname, password_h, age)
         self.users.append(user_obj)
-        self.current_user = user_obj.nickname
+        self.current_user = user_obj
         print(f'Пользователь {nickname} успешно создан и вошёл в систему')
 
     def log_in(self, nickname, password):
         for user in self.users:
             if nickname == user.nickname and hash(password) == user.password:
-                self.current_user = user.nickname
+                self.current_user = user
                 print(f'Пользователь {nickname} вошёл в систему')
                 return
         print(f'Неверный логин или пароль')
@@ -51,15 +56,19 @@ class UrTube:
         return answer_list
 
     def watch_video(self, title):
-        if self.current_user == None:
+        if self.current_user is None:
             print('Войдите в аккаунт, чтобы смотреть видео')
             return
         for video in self.videos:
             if title == video.title:
-                if video.adult_mode and self.current_user.age > 18:  # здесь возникает ошибка
-                    for i in range(1, video.duration):
-                        print(f'{i} ', end='')
-                    print('Конец видео')
+                if video.adult_mode and self.current_user.age < 18:
+                    print('Видео доступно только для пользователей старше 18 лет')
+                    return
+                for i in range(1, video.duration + 1):
+                    #time.sleep(1)
+                    video.time_now = i
+                    print(f'{video.time_now} ', end='')
+                print('Конец видео')
         return
 
     def add(self, *args):
@@ -69,7 +78,7 @@ class UrTube:
 
 
 ur = UrTube()
-v1 = Video('Лучший язык программирования 2024 года', 200)
+v1 = Video('Лучший язык программирования 2024 года', 20)
 v2 = Video('Для чего девушкам парень программист?', 10, adult_mode=True)
 
 # Добавление видео
@@ -84,10 +93,15 @@ ur.watch_video('Для чего девушкам парень программи
 
 ur.register('vasya_pupkin', 'lolkekcheburek', 13)
 ur.watch_video('Для чего девушкам парень программист?')
-ur.register('vasya_pupkin', 'lolkekcheburek', 13)
+ur.watch_video('Лучший язык программирования 2024 года')
+
 ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
+ur.watch_video('Для чего девушкам парень программист?')
+
+ur.register('vasya_pupkin', 'lolkekcheburek', 13)
 ur.log_in('vasya_pupkin', 'lolkekcheburek')
 
+# Попытка воспроизведения несуществующего видео
+ur.watch_video('Лучший язык программирования 2024 года!')
 
-print(f'current_user: {ur.current_user}')
-# print(f'videos {UrTube.videos}')
+print(ur.current_user)
