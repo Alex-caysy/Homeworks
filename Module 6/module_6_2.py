@@ -68,7 +68,7 @@ vehicle1.print_info()
 vehicle1.print_info()
 
 # Проверяем что цвета остались default при создании экземпляра
-vehicle2 = Sedan('Nikita', 'Nissan Patrol', 'black', 250)
+vehicle2 = Sedan('Nikita', 'Reno Logan', 'black', 100)
 vehicle2.print_info()
 
 # Еще раз проверяем цветовое выделение измененных атрибутов
