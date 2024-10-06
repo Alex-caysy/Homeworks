@@ -9,7 +9,7 @@ class Horse:
         self.x_distance += dx
 
     def get_pos(self):
-        return (self.x_distance, super().get_pos())
+        return self.x_distance, super().get_pos()
 
     def voice(self):
         return f'{super().sound}'
@@ -36,6 +36,7 @@ class Pegasus(Horse, Eagle):
 
     def voice(self):
         print(super().voice())
+
 
 p1 = Pegasus()
 
