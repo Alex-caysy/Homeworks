@@ -22,14 +22,14 @@ class WordsFinder:
         return all_words
 
     def find(self, word):
-        fine_dict = {}
+        find_dict = {}
         index = None
         word = word.lower()
         for file_name, words in self.get_all_words().items():
             if word in words:
                 index = int(words.index(word)) + 1
-            fine_dict.update({file_name: index})
-        return fine_dict
+            find_dict.update({file_name: index})
+        return find_dict
 
     def count(self, word):
         count_dict = {}
