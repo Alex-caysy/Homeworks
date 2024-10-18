@@ -10,7 +10,7 @@ def add_everything_up(a, b):
         return a + b
 
 
-print(add_everything_up(10.5, 7))
+print(add_everything_up(10.5, 8))
 print(add_everything_up('h', 7))
 print(add_everything_up(7, 'h'))
 print(add_everything_up('hel', 'lo'))
