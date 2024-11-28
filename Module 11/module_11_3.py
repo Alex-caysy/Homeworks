@@ -30,5 +30,7 @@ pprint(oject_info)
 number_info = introspection_info(42)
 pprint(number_info)
 
+pprint(introspection_info(test.my_obj))
+
 print(inspect.getsourcelines(test.MyClass.attr_plus_two))
 print(inspect.getsource(test.MyClass.attr_plus_two))
