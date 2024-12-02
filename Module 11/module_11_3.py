@@ -5,8 +5,9 @@ import test_func as test
 
 
 def introspection_info(obj):
+    print(f'\n {obj}')
     introspection_dict = dict()
-    introspection_dict['type'] = str(type(obj)).split()[-1]
+    introspection_dict['type'] = obj.__class__.__qualname__
     list_of_methods = []
     list_of_attrs = []
     for attr in dir(obj):
@@ -31,6 +32,8 @@ number_info = introspection_info(42)
 pprint(number_info)
 
 pprint(introspection_info(test.my_obj))
+
+pprint(introspection_info(test.func_summ))
 
 print(inspect.getsourcelines(test.MyClass.attr_plus_two))
 print(inspect.getsource(test.MyClass.attr_plus_two))
