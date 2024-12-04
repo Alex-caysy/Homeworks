@@ -10,8 +10,8 @@ class Runner:
     def walk(self):
         self.distance += self.speed
 
-    def __str__(self):
-        return self.name
+    def __str__(self):                   # если здесь переопределить метод "__repr__",
+        return self.name                 # то не придется пересоздавать словарь с именами в модуле тестирования.
 
     def __eq__(self, other):
         if isinstance(other, str):
@@ -29,7 +29,8 @@ class Tournament:
         finishers = {}
         place = 1
         while self.participants:
-            for participant in self.participants:
+            temp_list = self.participants.copy()   # изменил для правильной
+            for participant in temp_list:          # работы логики
                 participant.run()
                 if participant.distance >= self.full_distance:
                     finishers[place] = participant

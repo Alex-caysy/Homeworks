@@ -56,9 +56,10 @@ class TournamentTest(unittest.TestCase):
         last_runner = TournamentTest.all_results['race4'].get(last_runner_id)
         self.assertTrue(last_runner == self.Nick)
 
-
-
     @classmethod
     def tearDownClass(cls):
-        for volume_dict in TournamentTest.all_results.values():
-            print(volume_dict)
+        for value_dict in TournamentTest.all_results.values():
+            race = {}
+            for key, value in value_dict.items():
+                race.update({key: value.name})
+            print(race)
