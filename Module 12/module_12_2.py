@@ -59,7 +59,7 @@ class TournamentTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         for value_dict in TournamentTest.all_results.values():
-            # print(value_dict)        Достаточно одной строки если пере определить метод "__repr__" в классе Runner
+            # print(value_dict)        Достаточно одной строки если переопределить метод "__repr__" в классе Runner
             race = {}
             for key, value in value_dict.items():
                 race.update({key: value.name})
