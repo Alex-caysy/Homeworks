@@ -3,6 +3,7 @@ import runner_and_tournament
 
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
     @classmethod
     def setUpClass(cls):
         TournamentTest.all_results = {}
@@ -12,6 +13,7 @@ class TournamentTest(unittest.TestCase):
         self.Andrey = runner_and_tournament.Runner('Andrey', 9)
         self.Nick = runner_and_tournament.Runner('Nick', 3)
 
+    @unittest.skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_race1(self):
         """
         Test for start function in runner_and_tournament
@@ -23,6 +25,7 @@ class TournamentTest(unittest.TestCase):
         last_runner = TournamentTest.all_results['race1'].get(last_runner_id)
         self.assertTrue(last_runner == self.Nick)
 
+    @unittest.skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_race2(self):
         """
         Test2 for start function in runner_and_tournament
@@ -34,6 +37,7 @@ class TournamentTest(unittest.TestCase):
         last_runner = TournamentTest.all_results['race2'].get(last_runner_id)
         self.assertTrue(last_runner == self.Nick)
 
+    @unittest.skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_race3(self):
         """
         Test for start function in runner_and_tournament
@@ -45,6 +49,7 @@ class TournamentTest(unittest.TestCase):
         last_runner = TournamentTest.all_results['race3'].get(last_runner_id)
         self.assertTrue(last_runner == self.Nick)
 
+    @unittest.skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_race4(self):
         """
         Test for start function in runner_and_tournament
