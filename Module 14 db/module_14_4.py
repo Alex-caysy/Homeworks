@@ -10,6 +10,7 @@ import asyncio
 from crud_functions import *
 
 load_dotenv()
+initiate_db()
 
 bot = Bot(os.getenv('TOKEN'))
 dp = Dispatcher(bot, storage=MemoryStorage())
